@@ -1,10 +1,11 @@
 ﻿using System.Collections;
+using Svelto.Tasks;
 
 namespace Svelto.ECS.Intro.Player {
     public class PlayerMovementEngine : IQueryingEntitiesEngine {
         public EntitiesDB entitiesDB { private get; set; }
 
-        public void Ready() { MovePlayer().Run(); }
+        public void Ready() { MovePlayer().RunOnScheduler(StandardSchedulers.physicScheduler); }
 
         IEnumerator MovePlayer() {
             void PlayersMovement() {
