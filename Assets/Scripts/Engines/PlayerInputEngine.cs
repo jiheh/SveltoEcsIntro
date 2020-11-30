@@ -12,12 +12,12 @@ namespace Svelto.ECS.Intro.Player {
 
         IEnumerator ReadInput() {
             void IteratePlayersInput() {
+                var h = Input.GetAxisRaw("Horizontal");
+                var v = Input.GetAxisRaw("Vertical");
+
                 var (inputComponents, count) = entitiesDB.QueryEntities<InputComponent>(ECSGroups.PlayersGroup);
 
                 for (int i = 0; i < count; i++) {
-                    var h = Input.GetAxisRaw("Horizontal");
-                    var v = Input.GetAxisRaw("Vertical");
-
                     inputComponents[i].value = new Vector3(h, 0f, v);
                     Debug.Log(inputComponents[i].value);
                 }
